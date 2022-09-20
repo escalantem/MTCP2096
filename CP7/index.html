@@ -1,0 +1,170 @@
+<html>
+    <head>
+       
+    </head>
+
+    <body >
+
+     
+
+    </body>
+
+
+
+    <script language="JavaScript">
+     /*  
+       var promesa1 = function() {
+
+                return new Promise(function(resolver, cancelar) {
+
+                    setTimeout(function() {
+                        console.log("pasan 4 segundos");
+                        resolver();
+                    }, 4000);
+
+                });
+          }
+
+
+        var promesa2 = function() {
+            return new Promise(function(resolver, cancelar) {
+                setTimeout(function() {
+                    console.log("pasa 1 segundo");
+                    resolver();
+                }, 1000);
+            });
+        }
+
+
+promesa1().then(promesa2).then(function() {
+    console.log("termino");
+});*/
+  /*
+    function mensaje(msg)
+    {
+        console.log(msg);
+    }
+ 
+    var promesa1 = new Promise( function(f_ok, f_error)
+                            {
+
+                                var x = 0;
+
+                                x = Math.floor(Math.random()* 10);
+                                console.log(x);
+                                if(x%2 == 0)
+                                {
+                                    f_ok("ok");
+                                }
+                                else{
+                                    f_error("Se presento un error.");
+                                }
+
+                            });
+
+    promesa1.then(
+
+    function(value) {mensaje(value);},
+    function(value) {mensaje(value);}
+
+    );
+*/
+/*
+function despuesde2segundos() {
+    return new Promise( resolve => {
+        setTimeout(() => {
+            resolve('resuelto');
+        }, 2000);
+    });
+}
+
+
+async function asyncCall() {
+    console.log("ejecutando");
+    const result = await despuesde2segundos();
+    console.log(result);
+    // expected output: “resuelto”
+}
+
+asyncCall();
+console.log("Otra instruccion...");
+console.log("Otra instruccion...");
+console.log("Otra instruccion...");
+console.log("Otra instruccion...");
+console.log("Otra instruccion...");
+console.log("Otra instruccion...");
+*/
+
+ const datos = 
+ [
+    {
+        id:1,
+        titulo: 'Cien anios de Soledad',
+        fecha: '23/05/1980'
+    },
+
+    
+    {
+        id:2,
+        titulo: 'Lo que el viento se llevo',
+        fecha: '23/05/1980'
+    },
+
+    
+    {
+        id:3,
+        titulo: 'La divina comedia',
+        fecha: '23/05/1980'
+    }
+ ]
+
+
+const getDatos = function()
+{
+    return new Promise((resolve, reject) => 
+    {
+
+        if(datos.length == 0)
+        {
+            reject(new Error("No hay datos en la BD."));
+        }
+
+        setTimeout(
+            function()
+            {
+                resolve(datos);
+            }
+            , 4500);
+    }
+
+    );
+}
+
+//getDatos().then((datos) => {console.log(datos)});
+
+/*var datosObtenidos = await getDatos();
+console.log(datosObtenidos);
+*/
+
+async function obtenerDatos()
+{
+   try
+   {
+        var datosObtenidos = await getDatos();
+        console.log(datosObtenidos);
+   }
+   catch(error)
+   {
+    console.log("Error " + error.message);
+   }
+}
+
+
+
+obtenerDatos();
+
+//console.log(getDatos())
+
+
+     </script>
+</html>
