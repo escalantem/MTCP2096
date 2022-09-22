@@ -23,3 +23,7 @@ button {
   text-align: center;
   font-weight: bold;
 }
+
+.error{
+  color: crimson;
+}
