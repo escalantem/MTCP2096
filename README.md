@@ -11,8 +11,6 @@ Componentes prácticos
 ________________________________________________
 
 ![Python](https://img.shields.io/static/v1?label=Python&message=3.93&color=yellow&style=?style=for-the-badge&logo=python)
-![NET](https://img.shields.io/badge/.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
-![MicrosoftSQLServer](https://img.shields.io/badge/Microsoft%20SQL%20Sever-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white)
 ![Lines of code](https://img.shields.io/tokei/lines/github/escalantem/cp032096-2?style=for-the-badge)
 
 [[_TOC_]]
