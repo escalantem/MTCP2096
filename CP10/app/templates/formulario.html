@@ -1,17 +1,16 @@
-<html>
-    <head>
-        <title>Formulario de Registro</title>
-    
-        <script src="../static/js/nombre.js"></script>
+{% extends "base.html" %}
 
-        <link rel="stylesheet" type="text/css" href="../static/css/ejemplo1.css" />
+{% block titulo%}
+  Registro
+{% endblock %}
 
-
-    </head>
-    <body>
-       
+{%block contenido %}
         <h1>Registro para vacunacion COVID 19</h1>
-        <form action="" method="get" name="formRegistro" id ="formRegistro" onsubmit="validar_formulario();">
+        <form action="{{url_for('registro')}}" 
+              method="post" 
+              name="formRegistro" 
+              id ="formRegistro" 
+              onsubmit="validar_formulario();">
             
             <p>
                 <label >Nombre</label>
@@ -56,7 +55,14 @@
                 <!--<input type="submit" value=" Registrar " />-->
                 <button type="submit" value="Enviar">Enviar</button>
             </p>
+
+            <div class = 'error'>
+                <ul>
+                    {% for mensaje in errorMessages %}
+                    <li>{{mensaje}}</li> 
+                    {% endfor %}
+                </ul>
+            </div>
         </form>
 
-    </body>
-</html>
+{% endblock %}

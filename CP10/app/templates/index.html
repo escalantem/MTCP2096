@@ -1,15 +1,9 @@
-<html>
-    <head>
-       <title>{{ datos.titulo }}</title>
-    </head>
+{% extends "base.html" %}
 
-    <body >
+{% block titulo%}
+  Index
+{% endblock %}
 
-     <h1>{{ datos.mensaje }}</h1>
-
-     
-    </body>
-
-
-
-   </html>
+{% block contenido %}
+<h1>Hola mundo</h1>
+{% endblock %}
