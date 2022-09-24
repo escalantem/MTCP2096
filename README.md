@@ -23,7 +23,7 @@ Codigo fuente para soportar la operación XXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 ### Bases de datos 
 
-El motor principal del proyecto SQL SERVER 2016
+El motor principal del proyecto SQLITE
 
 
 
