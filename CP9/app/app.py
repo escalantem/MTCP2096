@@ -45,6 +45,9 @@ def registro():
 @app.route('/OtraPagina')
 def OtraPagina():
     return 'OtraPagina'
+
+
+   
     
 
     
