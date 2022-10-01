@@ -60,7 +60,7 @@ Es necesario tener en cuenta los siguientes Item:
 1) Realizar un pull del repositorio(git pull), o clonarlo(git clone urldelrepo.git).
 2) Crear el ambiente virtual desde la consola, win: python -m virtualenv virtual, OSX/Linux:python3 -m venv virtual.
 3) Activar el ambiente virtual, win: virtual\Scripts\activate, OSX/Linux: . virtual/bin/activate.
-4) Instalar los paquetes con el comando "pip instal -r requirements.txt".
+4) Instalar los paquetes con el comando  "cd app" y despues "pip install -r requirements.txt".
 5) Colocar la variable FLASK_APP, en win: set FLASK_APP=app/app, en OSX/Linux: export FLASK_APP=app/app.
 6) Ejecutar el programa con flask --debug run.
 
