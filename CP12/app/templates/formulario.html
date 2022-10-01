@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block titulo%}
+  Registro
+{% endblock %}
+
+{%block contenido %}
+        <h1>Registro para vacunacion COVID 19</h1>
+        <form action="{{url_for('registro')}}" 
+              method="post" 
+              name="formRegistro" 
+              id ="formRegistro" 
+              onsubmit="validar_formulario();">
+            
+            <p>
+                <label >Nombre</label>
+                <input type="text" name="userName" id="userName"/>
+            </p>
+
+            <p>
+                <label >Apellido</label>
+                <input type="text" name="userLastName" id="userLastName"/>
+            </p>
+
+            <p>
+                <label >Usuario</label>
+                <input type="text" name="user" id="user"/>
+            </p>
+
+            <p>
+                <label >Sexo Femenino</label>
+                <input type="radio" name="userSexF" id="userSexF" value="F"/>
+                <label >Sexo Masculino</label>
+                <input type="radio" name="userSexM" id="userSexM" value="M"/>
+            </p>
+            <p>
+                <label >Correo</label>
+                <input type="email" name="userMail" id="userMail"/>
+            </p>
+
+            <p>
+                <label >Clave</label>
+                <input type="password" name="password" id="password"/>
+                <img src="../static/img/layout_set_logo3.png" alt="mostrar Clave" width="50" height="50" onmouseenter="mostrarClave()" onmouseleave="mostrarClave()">
+            </p>
+
+            <p id="terminosCond">
+                    <input type="checkbox" id="terminos" value="aceptar"/>
+                    <label>Declaro haber leído y aceptar las condiciones generales del programa y la normativa sobre protección de datos</label>
+            </p>
+            
+            
+
+            <p>
+                <!--<input type="submit" value=" Registrar " />-->
+                <button type="submit" value="Enviar">Enviar</button>
+            </p>
+
+            <div class = 'error'>
+                <ul>
+                    {% for mensaje in errorMessages %}
+                    <li>{{mensaje}}</li> 
+                    {% endfor %}
+                </ul>
+            </div>
+        </form>
+
+{% endblock %}
