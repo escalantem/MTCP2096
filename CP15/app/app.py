@@ -1,6 +1,5 @@
 from webbrowser import get
 from flask import Flask, render_template, request, jsonify, redirect
-from requests import post
 import utils, os
 from forms import FormInicio
 from db import get_db, close_db
@@ -14,7 +13,8 @@ app.debug = True
 app.secret_key = 'c0v1-d1sp4p3l3s#2022' #os.urandom(24)  #'Hola mundo'
 
 if __name__ =='__main__':  
-    app.run(debug = True)
+    #app.run(debug = True)
+    app.run(host='127.0.0.1', port=443, ssl_context=('micertificado.pem', 'llaveprivada.pem'))
 
 
 @app.route('/')
@@ -105,5 +105,3 @@ def registro():
 @app.route('/message')
 def message():
     return jsonify({'mensajes' : mensajes})
-
-
