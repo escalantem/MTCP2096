@@ -1,5 +1,6 @@
+import functools
 from webbrowser import get
-from flask import Flask, render_template, request, jsonify, redirect
+from flask import Flask, make_response, render_template, request, jsonify, redirect, g, url_for, session, send_file
 from requests import post
 import utils, os
 from forms import FormInicio
@@ -16,6 +17,13 @@ app.secret_key = 'c0v1-d1sp4p3l3s#2022' #os.urandom(24)  #'Hola mundo'
 if __name__ =='__main__':  
     app.run(debug = True)
 
+def login_required(view):
+    @functools.wraps(view)
+    def warpped_view(**kwargs):
+        if 'user_id' not in session:#'user' not in g: #.user is None:
+            return redirect(url_for("login"))
+        return view(**kwargs)
+    return warpped_view
 
 @app.route('/')
 def index():
@@ -47,7 +55,12 @@ def login():
                 stored_password = userDB[4]
                 swClaveCorrecta = check_password_hash(stored_password, password)
                 if(swClaveCorrecta):
-                    return redirect('message')
+                    session.clear()
+                    session['user_id'] = userDB[0]
+                    resp = make_response(redirect(url_for('message')))
+                    resp.set_cookie('username', user)
+                   
+                    return resp
                 else:
                     return 'clave incorrecta.'
 
@@ -102,8 +115,20 @@ def registro():
 
     return render_template('formulario.html')
 
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('login'))
+
+
 @app.route('/message')
+@login_required
 def message():
-    return jsonify({'mensajes' : mensajes})
+    
+    #return jsonify({'mensajes' : mensajes})
+    return render_template('message.html', data=mensajes)
 
-
+@app.route('/downloadpdf', methods=('GET', 'POST'))
+@login_required
+def downloadpdf():
+    return send_file("resources/CP_SESION01_ENUNCIADO.pdf", as_attachment=True)
